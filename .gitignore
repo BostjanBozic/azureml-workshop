@@ -1,0 +1,8 @@
+# Azure configuration
+config.json
+
+# PyEnv
+.python-version
+
+# VS Code
+.vscode
