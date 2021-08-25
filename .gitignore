@@ -1,8 +1,11 @@
-# Azure configuration
+# AzureML
 config.json
 
-# PyEnv
+# Pyenv
 .python-version
 
-# VS Code
+# Data files
+data/
+
+# Visual Sudio Code
 .vscode
