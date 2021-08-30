@@ -1,0 +1,6 @@
+$schema: https://azuremlsdk2.blob.core.windows.net/latest/asset.schema.json
+name: monthlyAverage
+version: 2
+description: Monthly average
+datastore: azureml:workspaceblobstore
+local_path: ./samples

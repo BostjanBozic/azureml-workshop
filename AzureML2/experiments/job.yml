@@ -1,0 +1,19 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+code:
+  local_path: src
+command: >
+  python train.py
+  --iris-csv {inputs.iris}
+inputs:
+  iris:
+    data:
+      path: https://azuremlexamples.blob.core.windows.net/datasets/iris.csv
+    mode: mount
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
+  conda_file: file:conda/conda.yml
+compute:
+  target: azureml:rimi-cluster
+experiment_name: iris-azureml2
+description: AzureML 2 Iris example

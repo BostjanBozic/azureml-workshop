@@ -1,0 +1,53 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json
+name: blue-green-endpoint
+type: online
+auth_mode: key
+traffic:
+  blue: 90
+  green: 10
+
+deployments:
+  - name: blue
+    model:
+      name: model-1
+      version: 1
+      local_path: ./models/model-1/sklearn_regression_model.pkl
+    code_configuration:
+      code:
+        local_path: ./models/model-1/scoring
+      scoring_script: score.py
+    environment:
+      name: blue-green-model-1
+      version: 1
+      path: .
+      conda_file: file:models/model-1/conda-env/conda.yml
+      docker:
+        image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210301.v1
+    instance_type: Standard_DS2_v2
+    scale_settings:
+      scale_type: Manual
+      instance_count: 2
+      min_instances: 1
+      max_instances: 2
+  - name: green
+    model:
+      name: model-2
+      version: 1
+      local_path: ./models/model-2/sklearn_regression_model.pkl
+    code_configuration:
+      code:
+        local_path: ./models/model-2/scoring
+      scoring_script: score.py
+    environment: 
+      name: blue-green-model-2
+      version: 1
+      path: .
+      conda_file: file:models/model-2/conda-env/conda.yml
+      docker:
+        image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210301.v1
+    instance_type: Standard_DS2_v2
+    scale_settings:
+      scale_type: Manual
+      instance_count: 2
+      min_instances: 1
+      max_instances: 2

@@ -38,6 +38,7 @@ train_data = PipelineData("train_data", datastore=datastore).as_dataset()
 test_data = PipelineData("test_data", datastore=datastore).as_dataset()
 scaler_file = PipelineData("scaler_file", datastore=datastore)
 model_file = PipelineData("model_file", datastore=datastore)
+register_deploy_dep = PipelineData("dependency", datastore=datastore)
 
 
 step1 = PythonScriptStep(
@@ -79,7 +80,29 @@ step2 = PythonScriptStep(
   outputs=[model_file],
 )
 
-pipeline_steps = [step1, step2]
+step3 = PythonScriptStep(
+  name="Register the model",
+  source_directory="./register",
+  script_name="register.py",
+  arguments=["--model", model_file],
+  inputs=[model_file],
+  outputs=[register_deploy_dep],
+  compute_target=compute,
+  runconfig=run_config,
+  allow_reuse=True,
+)
+
+step4 = PythonScriptStep(
+  name="Deploy the model",
+  source_directory="./deploy",
+  script_name="deploy.py",
+  inputs=[register_deploy_dep],
+  compute_target=compute,
+  runconfig=run_config,
+  allow_reuse=True,
+)
+
+pipeline_steps = [step1]
 
 pipeline = Pipeline(workspace=ws, steps=pipeline_steps)
 pipeline_run = Experiment(ws, "diabetes-pipeline").submit(pipeline, regenerate_outputs=False)

@@ -1,0 +1,57 @@
+name: train-score-eval-pipeline
+type: pipeline_job
+
+inputs:
+  pipeline_train_input: #using dataset, can use datastore + datapath also
+    data: azureml:pipeline-data:1
+  pipeline_test_input:
+    data: azureml:pipeline-data:1
+  pipeline_train_max_epocs: 30
+  pipeline_train_learning_rate: 1.8
+  pipeline_learning_rate_schedule: 'time-based'
+
+outputs: 
+  pipeline_trained_model:
+    data: 
+      path: /trained-model
+  pipeline_scored_data:
+    data: 
+      path: /scored_data
+  pipeline_evaluation_report:
+    data: 
+      path: /report
+
+defaults:
+  component_job:
+    datastore: azureml:workspaceblobstore
+    compute:
+      target: rimi-cluster
+
+jobs:
+  train-job:
+    type: component_job
+    component: azureml:train:1
+    inputs:
+      training_data: inputs.pipeline_train_input
+      max_epocs: inputs.pipeline_train_max_epocs
+      learning_rate: inputs.pipeline_train_learning_rate
+      learning_rate_schedule: inputs.pipeline_learning_rate_schedule
+    outputs:
+      model_output: outputs.pipeline_trained_model
+  
+  score-job:
+    type: component_job
+    component: azureml:score:1
+    inputs:
+      model_input: jobs.train-job.outputs.model_output
+      test_data: inputs.pipeline_test_input
+    outputs:
+      score_output: outputs.pipeline_scored_data
+
+  evaluate-job:
+    type: component_job
+    component: azureml:eval:1
+    inputs:
+      scoring_result: jobs.score-job.outputs.score_output
+    outputs:
+      eval_output: outputs.pipeline_evaluation_report
