@@ -1,0 +1,10 @@
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=3.8.1
+  - pip:
+      - azureml-defaults
+      - ray-on-aml==0.1.6
+  - pip
+  - dask
