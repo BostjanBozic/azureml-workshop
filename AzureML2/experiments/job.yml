@@ -14,6 +14,6 @@ environment:
     image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
   conda_file: file:conda/conda.yml
 compute:
-  target: azureml:rimi-cluster
+  target: azureml:example-cluster
 experiment_name: iris-azureml2
 description: AzureML 2 Iris example

@@ -4,7 +4,7 @@ from azureml.core import Environment
 ws = Workspace.from_config(path="../../")
 
 cust_envir = Environment.from_pip_requirements(
-  name="rimi-from-pip",
+  name="example-from-pip",
   file_path="./requirements.txt",
 )
 

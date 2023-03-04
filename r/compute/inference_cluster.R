@@ -2,8 +2,8 @@ library(azuremlsdk)
 
 ws <- load_workspace_from_config(path = "../../")
 
-aks_rg <- "rimi"
-aks_name <- "rimi-aks"
+aks_rg <- "example"
+aks_name <- "example-aks"
 
 aks_target <- attach_aks_compute(
   workspace = ws,

@@ -1,8 +1,8 @@
 library(azuremlsdk)
 
-ws_name <- "rimiworkshop"
+ws_name <- "example"
 ws_subscription_id <- "<subscriptionId>"
-ws_resource_group <- "rimi"
+ws_resource_group <- "example"
 ws_location <- "westeurope"
 
 ws <- create_workspace(

@@ -11,7 +11,7 @@ env = Environment.from_conda_specification(
 config = ScriptRunConfig(
   source_directory="./src",
   script="train.py",
-  compute_target="rimi-cluster",
+  compute_target="example-cluster",
   environment=env,
   arguments=[
     "--kernel", "linear",

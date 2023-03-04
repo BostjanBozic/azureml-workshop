@@ -25,7 +25,7 @@ defaults:
   component_job:
     datastore: azureml:workspaceblobstore
     compute:
-      target: rimi-cluster
+      target: example-cluster
 
 jobs:
   train-job:

@@ -23,7 +23,7 @@ config = InferenceConfig(
 aks_config = AksWebservice.deploy_configuration(
   cpu_cores=1,
   memory_gb=2,
-  compute_target_name="rimi-aks-cluster",
+  compute_target_name="example-aks-cluster",
   auth_enabled=False,
 )
 

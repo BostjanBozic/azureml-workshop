@@ -4,7 +4,7 @@ ws = Workspace.from_config(path="../../")
 
 datastore = Datastore.get(
   workspace=ws,
-  datastore_name="rimiblobstorage",
+  datastore_name="exampleblobstorage",
 )
 
 dataset = Dataset.Tabular.from_parquet_files(path=(datastore, "*.parquet"))

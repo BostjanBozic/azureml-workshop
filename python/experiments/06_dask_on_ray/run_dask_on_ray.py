@@ -3,7 +3,7 @@ from azureml.core.compute import ComputeTarget
 from azureml.core.runconfig import RunConfiguration
 
 ws = Workspace.from_config(path="../../../")
-compute_cluster = "rimi-cluster"
+compute_cluster = "example-cluster"
 
 ray_env = Environment.from_conda_specification(
     name = "RayEnv",

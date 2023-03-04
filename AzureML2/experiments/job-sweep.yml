@@ -19,7 +19,7 @@ trial:
       image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
     conda_file: file:conda_env/conda.yml
   compute:
-    target: azureml:rimi-cluster
+    target: azureml:example-cluster
 search_space:
   learning_rate:
     type: uniform

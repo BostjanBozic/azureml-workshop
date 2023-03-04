@@ -10,7 +10,7 @@ exp = Experiment(
 exp_config = ScriptRunConfig(
   source_directory="./src",
   script="hello.py",
-  compute_target="rimi-cluster",
+  compute_target="example-cluster",
 )
 
 run = exp.submit(config=exp_config)

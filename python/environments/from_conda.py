@@ -13,7 +13,7 @@ conda.add_conda_package("numpy")
 
 conda.add_pip_package("pandas")
 
-env = Environment(name="rimi-conda")
+env = Environment(name="example-conda")
 env.python.conda_dependencies = conda
 
 env.register(workspace=ws)

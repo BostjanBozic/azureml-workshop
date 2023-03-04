@@ -12,7 +12,7 @@ env = ws.environments["AzureML-PyTorch-1.6-CPU"]
 exp_config = ScriptRunConfig(
   source_directory="./src",
   script="train.py",
-  compute_target="rimi-cluster",
+  compute_target="example-cluster",
   environment=env,
 )
 

@@ -14,7 +14,7 @@ env <- r_environment(
 config <- estimator(
   source_directory = "./src",
   entry_script = "hello.R",
-  compute_target = "rimi-cluster",
+  compute_target = "example-cluster",
   environment = env
 )
 

@@ -1,7 +1,7 @@
 library(azuremlsdk)
 
 ws <- load_workspace_from_config(path = "../../")
-cluster_name <- "rimi-cluster"
+cluster_name <- "example-cluster"
 
 cluster <- get_compute(workspace = ws, cluster_name = cluster_name)
 if (is.null(cluster)) {

@@ -17,7 +17,7 @@ dataset_blob = Dataset.get_by_name(
 exp_config = ScriptRunConfig(
   source_directory="./src",
   script="train.py",
-  compute_target="rimi-cluster",
+  compute_target="example-cluster",
   environment=env,
   arguments=[
     "--data-path", dataset_blob.as_named_input("input").as_mount(),

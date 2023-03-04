@@ -3,7 +3,7 @@ from azureml.core.compute import ComputeInstance
 from azureml.core.compute_target import ComputeTargetException
 
 ws = Workspace.from_config(path="../../")
-compute_name = "rimi-instance"
+compute_name = "example-instance"
 
 try:
   instance = ComputeInstance(

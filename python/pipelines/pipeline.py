@@ -8,7 +8,7 @@ ws = Workspace.from_config(path="../../")
 env = Environment.from_conda_specification("diabetes-environment", "./conda.yml")
 compute = AmlCompute(
   workspace=ws,
-  name="rimi-cluster",
+  name="example-cluster",
 )
 
 run_config = RunConfiguration()
@@ -17,7 +17,7 @@ run_config.environment = env
 
 datastore = Datastore.get(
   workspace=ws,
-  datastore_name="rimiblobstorage",
+  datastore_name="exampleblobstorage",
 )
 
 datastore.upload_files(

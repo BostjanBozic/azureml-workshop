@@ -3,8 +3,8 @@
 IMAGE_NAME="r-azureml"
 IMAGE_TAG="0.0.1"
 
-WORKSPACE="rimiworkshop"
-RESOURCE_GROUP="rimi"
+WORKSPACE="example"
+RESOURCE_GROUP="example-rg"
 
 REGISTRY_NAME=$(az ml workspace show -w ${WORKSPACE} -g ${RESOURCE_GROUP} | jq -r .container_registry | sed 's/.*\///')
 

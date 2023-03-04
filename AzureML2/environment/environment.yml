@@ -1,7 +1,7 @@
 $schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
-name: rimi-azureml-2
+name: example-azureml-2
 version: 1
 docker:
   image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
 conda_file: file:conda/conda.yml
-description: Rimi AzureML2 basic environment example
+description: Example AzureML2 basic environment example
